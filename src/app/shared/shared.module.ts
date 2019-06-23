@@ -1,14 +1,23 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { CoreModule } from '../core/core.module';
+import { TodoListComponent } from './todos/todo-list.component';
+import { TodoListItemComponent } from './todos/todo-list-item.component';
+import { TodoAddItemComponent } from './todos/todo-add-item.component';
 
 @NgModule({
   imports: [
-    CommonModule,
-    CoreModule,
-    SharedModule
+    CommonModule
   ],
-  declarations: []
+  declarations: [
+    TodoListComponent,
+    TodoListItemComponent,
+    TodoAddItemComponent
+  ],
+  exports: [
+    TodoListComponent,
+    TodoListItemComponent,
+    TodoAddItemComponent
+  ]
 })
 export class SharedModule { }

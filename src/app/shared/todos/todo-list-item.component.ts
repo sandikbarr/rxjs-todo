@@ -1,0 +1,21 @@
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Todo } from '../models/Todo';
+import {  } from 'events';
+
+@Component({
+  selector: 'app-todo-list-item',
+  template: `
+    <li>
+      <input
+        [id]="todo.id"
+        type="checkbox"
+        [checked]="todo.completed"
+        (click)="toggleTodo.emit(!todo.completed)"/>
+      <label [for]="todo.id">{{ todo.description }}</label>
+    </li>
+  `
+})
+export class TodoListItemComponent {
+  @Input() todo: Todo;
+  @Output() toggleTodo = new EventEmitter<boolean>();
+}
