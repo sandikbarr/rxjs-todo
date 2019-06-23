@@ -6,7 +6,9 @@ import { Todo } from '../models/Todo';
 @Component({
   selector: 'app-todo-list',
   template: `
-    <app-todo-add-item (addTodo)="addTodo($event)"></app-todo-add-item>
+    <div class="add-todo">
+      <app-todo-add-item (addTodo)="addTodo($event)"></app-todo-add-item>
+    </div>
     <ul>
       <app-todo-list-item
         *ngFor="let todo of todos"
@@ -15,7 +17,8 @@ import { Todo } from '../models/Todo';
         (deleteTodo)="deleteTodo(todo)">
       </app-todo-list-item>
     </ul>
-  `
+  `,
+  styleUrls: ['todo-list.component.css']
 })
 export class TodoListComponent implements OnInit, OnDestroy {
   todos: Todo[];

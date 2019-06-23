@@ -1,0 +1,18 @@
+:host:nth-child(2n + 1) {
+  display: block;
+  background-color: #eee;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  padding: 1em;
+}
+
+label {
+  margin-left: 0.5em;
+}
+
+button {
+  margin-left: 1em;
+}
