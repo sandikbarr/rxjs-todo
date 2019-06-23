@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
-import { Todo } from '../../shared/models/Todo';
+import { Todo } from '../models/Todo';
 import { TodoAPIService } from '../api/todo-api.service';
 
 @Injectable()

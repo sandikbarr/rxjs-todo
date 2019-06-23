@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { share } from 'rxjs/operators';
 
-import { Todo } from '../../shared/models/Todo';
+import { Todo } from '../models/Todo';
 
 const headers = new HttpHeaders({
   'Content-Type': 'application/json'
