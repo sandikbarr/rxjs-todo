@@ -2,7 +2,7 @@ import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { TodoListComponent } from './todo/components/todo-list.component';
-import { TodoEditComponent } from './todo/components/todo-edit.component';
+import { TodoEditComponent } from './todo/components/edit/todo-edit.component';
 
 export const routes: Routes = [
   {

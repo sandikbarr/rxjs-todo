@@ -1,0 +1,7 @@
+:host {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+.checkbox-wrapper {
+  text-align: right;
+}
