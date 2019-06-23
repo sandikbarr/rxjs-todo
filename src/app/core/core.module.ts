@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
 import { TodoAPIService } from './api/todo-api.service';
+import { TodoStoreService } from './store/todo-store.service';
 
 @NgModule({
   imports: [
@@ -10,7 +11,8 @@ import { TodoAPIService } from './api/todo-api.service';
     HttpClientModule
   ],
   providers: [
-    TodoAPIService
+    TodoAPIService,
+    TodoStoreService
   ]
 })
 export class CoreModule { }
