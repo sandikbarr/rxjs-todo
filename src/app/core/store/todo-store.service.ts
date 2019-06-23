@@ -18,53 +18,52 @@ export class TodoStoreService {
   }
 
   loadInitialData() {
-      this.todoAPI.getAllTodos()
-          .subscribe(
-              todos => {
-                  this._todos.next(todos);
-              },
-              err => console.log('Error retrieving Todos')
-          );
-
+    this.todoAPI.getAllTodos()
+      .subscribe(
+          todos => {
+              this._todos.next(todos);
+          },
+          err => console.log('Error retrieving Todos')
+      );
   }
 
   addTodo(newTodo: Todo): Observable<Todo> {
-      const observable = this.todoAPI.saveTodo(newTodo);
+    const observable = this.todoAPI.saveTodo(newTodo);
 
-      observable.subscribe(() => this._todos.next(this._todos.getValue().concat([newTodo])));
+    observable.subscribe(() => this._todos.next(this._todos.getValue().concat([newTodo])));
 
-      return observable;
+    return observable;
   }
 
   toggleTodo(toggled: Todo): Observable<Todo> {
-      const observable = this.todoAPI.toggleTodo(toggled);
+    const observable = this.todoAPI.toggleTodo(toggled);
 
-      observable.subscribe(() => {
-        const todos = this._todos.getValue();
-        const index = todos.findIndex((t: Todo) => t.id === toggled.id);
-        this._todos.next([
-          ...todos.slice(0, index),
-          toggled,
-          ...todos.slice(index + 1)
-        ]);
-      });
+    observable.subscribe(() => {
+      const todos = this._todos.getValue();
+      const index = todos.findIndex((t: Todo) => t.id === toggled.id);
+      this._todos.next([
+        ...todos.slice(0, index),
+        toggled,
+        ...todos.slice(index + 1)
+      ]);
+    });
 
-      return observable;
+    return observable;
   }
 
 
   deleteTodo(deleted: Todo): Observable<{}> {
-      const observable = this.todoAPI.deleteTodo(deleted);
+    const observable = this.todoAPI.deleteTodo(deleted);
 
-      observable.subscribe(() => {
-        const todos: Todo[] = this._todos.getValue();
-        const index = todos.findIndex((todo) => todo.id === deleted.id);
-        this._todos.next([
-          ...todos.slice(0, index),
-          ...todos.slice(index + 1)
-        ]);
-      });
+    observable.subscribe(() => {
+      const todos: Todo[] = this._todos.getValue();
+      const index = todos.findIndex((todo) => todo.id === deleted.id);
+      this._todos.next([
+        ...todos.slice(0, index),
+        ...todos.slice(index + 1)
+      ]);
+    });
 
-      return observable;
+    return observable;
   }
 }

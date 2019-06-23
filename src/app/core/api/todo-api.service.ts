@@ -11,14 +11,13 @@ export class TodoAPIService {
   constructor(private http: HttpClient) { }
 
   getAllTodos(): Observable<Todo[]> {
-    return this.http.get<Todo[]>('/todo');
+    return this.http.get<Todo[]>('http://localhost:3000/todos');
   }
 
   saveTodo(newTodo: Todo): Observable<Todo> {
     const headers = new HttpHeaders();
-    headers.append('Content-Type', 'application/json; charset=utf-8');
-
-    return this.http.post<Todo>('/todo', JSON.stringify(newTodo), {headers}).pipe(share());
+    headers.append('Content-Type', 'application/json;');
+    return this.http.post<Todo>('http://localhost:3000/todos', newTodo, {headers}).pipe(share());
   }
 
   deleteTodo(deletedTodo: Todo): Observable<{}> {
@@ -30,7 +29,7 @@ export class TodoAPIService {
 
   toggleTodo(toggled: Todo): Observable<Todo> {
     const headers = new HttpHeaders();
-    headers.append('Content-Type', 'application/json; charset=utf-8');
-    return this.http.put<Todo>('/todo', JSON.stringify(toggled), {headers}).pipe(share());
+    headers.append('Content-Type', 'application/json');
+    return this.http.put<Todo>('http://localhost:3000/todos/' + toggled.id, toggled, {headers}).pipe(share());
   }
 }
