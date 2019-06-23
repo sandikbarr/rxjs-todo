@@ -30,7 +30,9 @@ export class TodoStoreService {
   addTodo(newTodo: Todo): Observable<Todo> {
     const observable = this.todoAPI.saveTodo(newTodo);
 
-    observable.subscribe(() => this._todos.next(this._todos.getValue().concat([newTodo])));
+    observable.subscribe((savedTodo: Todo) =>
+      this._todos.next(this._todos.getValue().concat([savedTodo]))
+    );
 
     return observable;
   }
