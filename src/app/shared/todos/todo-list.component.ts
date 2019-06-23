@@ -11,7 +11,8 @@ import { Todo } from '../models/Todo';
       <app-todo-list-item
         *ngFor="let todo of todos"
         [todo]="todo"
-        (toggleTodo)="toggleTodo(todo, $event)">
+        (toggleTodo)="toggleTodo(todo, $event)"
+        (deleteTodo)="deleteTodo(todo)">
       </app-todo-list-item>
     </ul>
   `
@@ -38,5 +39,9 @@ export class TodoListComponent implements OnInit, OnDestroy {
 
   addTodo(todo: Todo) {
     this.todoStore.addTodo(todo);
+  }
+
+  deleteTodo(todo: Todo) {
+    this.todoStore.deleteTodo(todo);
   }
 }

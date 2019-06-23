@@ -5,6 +5,10 @@ import { share } from 'rxjs/operators';
 
 import { Todo } from '../../shared/models/Todo';
 
+const headers = new HttpHeaders({
+  'Content-Type': 'application/json'
+});
+
 @Injectable()
 export class TodoAPIService {
 
@@ -15,21 +19,14 @@ export class TodoAPIService {
   }
 
   saveTodo(newTodo: Todo): Observable<Todo> {
-    const headers = new HttpHeaders();
-    headers.append('Content-Type', 'application/json;');
     return this.http.post<Todo>('http://localhost:3000/todos', newTodo, {headers}).pipe(share());
   }
 
   deleteTodo(deletedTodo: Todo): Observable<{}> {
-    const params = new HttpParams();
-    params.append('id', '' + deletedTodo.id );
-
-    return this.http.delete('/todo', {params}).pipe(share());
+    return this.http.delete('http://localhost:3000/todos/' + deletedTodo.id, {headers}).pipe(share());
   }
 
   toggleTodo(toggled: Todo): Observable<Todo> {
-    const headers = new HttpHeaders();
-    headers.append('Content-Type', 'application/json');
     return this.http.put<Todo>('http://localhost:3000/todos/' + toggled.id, toggled, {headers}).pipe(share());
   }
 }

@@ -1,6 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Todo } from '../models/Todo';
-import {  } from 'events';
 
 @Component({
   selector: 'app-todo-list-item',
@@ -12,10 +11,12 @@ import {  } from 'events';
         [checked]="todo.completed"
         (click)="toggleTodo.emit(!todo.completed)"/>
       <label [for]="todo.id">{{ todo.description }}</label>
+      <button (click)="deleteTodo.emit()">Delete</button>
     </li>
   `
 })
 export class TodoListItemComponent {
   @Input() todo: Todo;
   @Output() toggleTodo = new EventEmitter<boolean>();
+  @Output() deleteTodo = new EventEmitter();
 }
