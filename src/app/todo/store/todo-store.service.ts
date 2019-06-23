@@ -2,14 +2,14 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 import { Todo } from '../models/Todo';
-import { TodoAPIService } from '../api/todo-api.service';
+import { TodoHttpService } from '../http/todo-http.service';
 
 @Injectable()
 export class TodoStoreService {
 
   private _todos: BehaviorSubject<Todo[]> = new BehaviorSubject([]);
 
-  constructor(private todoAPI: TodoAPIService) {
+  constructor(private todoAPI: TodoHttpService) {
       this.loadInitialData();
   }
 

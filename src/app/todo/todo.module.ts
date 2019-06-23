@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
-import { TodoAPIService } from './api/todo-api.service';
+import { TodoHttpService } from './http/todo-http.service';
 import { TodoStoreService } from './store/todo-store.service';
 
 import { TodoListComponent } from './components/todo-list.component';
@@ -24,7 +24,7 @@ import { TodoEditComponent } from './components/todo-edit.component';
     TodoEditComponent
   ],
   providers: [
-    TodoAPIService,
+    TodoHttpService,
     TodoStoreService
   ]
 })

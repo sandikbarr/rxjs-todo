@@ -10,7 +10,7 @@ const headers = new HttpHeaders({
 });
 
 @Injectable()
-export class TodoAPIService {
+export class TodoHttpService {
 
   constructor(private http: HttpClient) { }
 
