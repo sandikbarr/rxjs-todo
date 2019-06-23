@@ -37,15 +37,15 @@ export class TodoStoreService {
     return observable;
   }
 
-  toggleTodo(toggled: Todo): Observable<Todo> {
-    const observable = this.todoAPI.toggleTodo(toggled);
+  editTodo(todo: Todo): Observable<Todo> {
+    const observable = this.todoAPI.toggleTodo(todo);
 
     observable.subscribe(() => {
       const todos = this._todos.getValue();
-      const index = todos.findIndex((t: Todo) => t.id === toggled.id);
+      const index = todos.findIndex((t: Todo) => t.id === todo.id);
       this._todos.next([
         ...todos.slice(0, index),
-        toggled,
+        todo,
         ...todos.slice(index + 1)
       ]);
     });

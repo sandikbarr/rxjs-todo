@@ -34,7 +34,7 @@ export class TodoListComponent implements OnInit, OnDestroy {
   }
 
   toggleTodo(todo: Todo, completed: boolean) {
-    this.todoStore.toggleTodo({...todo, completed});
+    this.todoStore.editTodo({...todo, completed});
   }
 
   addTodo(todo: Todo) {

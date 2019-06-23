@@ -11,6 +11,7 @@ import { Todo } from '../models/Todo';
         [checked]="todo.completed"
         (click)="toggleTodo.emit(!todo.completed)"/>
       <label [for]="todo.id">{{ todo.description }}</label>
+      <a [routerLink]="todo.id">Edit</a> |
       <button (click)="deleteTodo.emit()">Delete</button>
     </li>
   `
