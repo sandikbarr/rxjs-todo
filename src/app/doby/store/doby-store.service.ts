@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { withLatestFrom } from 'rxjs/operators';
 
 import { Doby } from '../models/Doby';
 import { DobyHttpService } from '../http/doby-http.service';
@@ -30,9 +31,11 @@ export class DobyStoreService {
   addDoby(newDoby: Doby): Observable<Doby> {
     const observable = this.dobyAPI.saveDoby(newDoby);
 
-    observable.subscribe((savedDoby: Doby) =>
-      this._dobys.next(this._dobys.getValue().concat([savedDoby]))
-    );
+    observable.pipe(
+      withLatestFrom(this.dobys),
+    ).subscribe(([savedDoby, dobys]) => {
+      this._dobys.next(dobys.concat(savedDoby));
+    });
 
     return observable;
   }
@@ -40,12 +43,13 @@ export class DobyStoreService {
   editDoby(doby: Doby): Observable<Doby> {
     const observable = this.dobyAPI.toggleDoby(doby);
 
-    observable.subscribe(() => {
-      const dobys = this._dobys.getValue();
+    observable.pipe(
+      withLatestFrom(this.dobys)
+    ).subscribe(([savedDoby, dobys]) => {
       const index = dobys.findIndex((d: Doby) => d.id === doby.id);
       this._dobys.next([
         ...dobys.slice(0, index),
-        doby,
+        savedDoby,
         ...dobys.slice(index + 1)
       ]);
     });
@@ -57,8 +61,9 @@ export class DobyStoreService {
   deleteDoby(deleted: Doby): Observable<{}> {
     const observable = this.dobyAPI.deleteDoby(deleted);
 
-    observable.subscribe(() => {
-      const dobys: Doby[] = this._dobys.getValue();
+    observable.pipe(
+      withLatestFrom(this.dobys)
+    ).subscribe(([empty, dobys]) => {
       const index = dobys.findIndex((doby) => doby.id === deleted.id);
       this._dobys.next([
         ...dobys.slice(0, index),
