@@ -27,9 +27,9 @@ export class DobyChecklistComponent implements OnInit, OnDestroy {
     this.checklistSub = this.checklistStream.pipe(
       debounceTime(300),
       distinctUntilChanged(),
-      filter(value => value && value.length > 0),
-      map((value: string) => {
-        return value.split(',')
+      filter(values => !!values || values === ''),
+      map((values: string) => {
+        return values.split(',')
           .filter(v => v && v.trim())
           .map((v, i) => {
             let completed;

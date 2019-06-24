@@ -22,8 +22,8 @@ export class DobyTagsComponent implements OnInit, OnDestroy {
     this.changeSub = this.tagsStream.pipe(
       debounceTime(300),
       distinctUntilChanged(),
-      filter(value => value && value.length > 0),
-      map((value: string) => value.split(',').map(v => v.trim()).filter(v => v)),
+      filter(values => !!values || values === ''),
+      map((values: string) => values.split(',').map(v => v.trim()).filter(v => v)),
     ).subscribe(tags => this.tagsChange.emit(tags));
   }
 
