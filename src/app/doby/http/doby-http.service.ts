@@ -26,7 +26,7 @@ export class DobyHttpService {
     return this.http.delete('http://localhost:3000/dobys/' + deletedDoby.id, {headers}).pipe(share());
   }
 
-  toggleDoby(toggled: Doby): Observable<Doby> {
-    return this.http.put<Doby>('http://localhost:3000/dobys/' + toggled.id, toggled, {headers}).pipe(share());
+  updateDoby(updatedDoby: Doby): Observable<Doby> {
+    return this.http.put<Doby>('http://localhost:3000/dobys/' + updatedDoby.id, updatedDoby, {headers}).pipe(share());
   }
 }

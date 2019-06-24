@@ -41,7 +41,7 @@ export class DobyStoreService {
   }
 
   editDoby(doby: Doby): Observable<Doby> {
-    const observable = this.dobyAPI.toggleDoby(doby);
+    const observable = this.dobyAPI.updateDoby(doby);
 
     observable.pipe(
       withLatestFrom(this.dobys)
