@@ -4,9 +4,12 @@
 }
 
 li {
+  padding: 1em;
+}
+
+.actions {
   display: flex;
   justify-content: space-between;
-  padding: 1em;
 }
 
 label {
@@ -15,4 +18,15 @@ label {
 
 button {
   margin-left: 1em;
+}
+
+.tags {
+  margin-top: 0.5em;
+}
+
+.tag {
+  background-color: #2196f3;
+  color: white;
+  margin-right: 0.5em;
+  padding: 0 0.5em;
 }
