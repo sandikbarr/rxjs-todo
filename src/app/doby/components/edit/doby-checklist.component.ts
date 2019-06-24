@@ -51,7 +51,7 @@ export class DobyChecklistComponent implements OnInit, OnDestroy {
   }
 
   get checklistString(): string {
-    return this.checklist && this.checklist.length && this.checklist.map(c => c.description).join(', ');
+    return this.checklist && this.checklist.length && this.checklist.map(c => c.description).join(', ') || '';
   }
 
   onToggleChecklistItem(index: number) {
