@@ -1,5 +1,5 @@
 {
-  "name": "angular-rxjs-talk",
+  "name": "do-by",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "api": "json-server --watch todo-api/db.json --port 3000"
+    "api": "json-server --watch doby-api/db.json --port 3000"
   },
   "private": true,
   "dependencies": {

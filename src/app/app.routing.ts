@@ -1,17 +1,17 @@
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { TodoListComponent } from './todo/components/todo-list.component';
-import { TodoEditComponent } from './todo/components/edit/todo-edit.component';
+import { DobyListComponent } from './doby/components/doby-list.component';
+import { DobyEditComponent } from './doby/components/edit/doby-edit.component';
 
 export const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'todos'
+    redirectTo: 'doby'
   },
-  { path: 'todos', component: TodoListComponent },
-  { path: 'todos/:id', component: TodoEditComponent }
+  { path: 'doby', component: DobyListComponent },
+  { path: 'doby/:id', component: DobyEditComponent }
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(routes);

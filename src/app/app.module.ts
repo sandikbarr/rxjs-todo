@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { TodoModule } from './todo/todo.module';
+import { DobyModule } from './doby/doby.module';
 import { AppComponent } from './app.component';
 import { routing } from './app.routing';
 
@@ -11,7 +11,7 @@ import { routing } from './app.routing';
   ],
   imports: [
     BrowserModule,
-    TodoModule,
+    DobyModule,
     routing
   ],
   providers: [],

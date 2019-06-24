@@ -1,4 +1,4 @@
-export interface Todo {
+export interface Doby {
   id: number;
   description: string;
   completed?: boolean;
