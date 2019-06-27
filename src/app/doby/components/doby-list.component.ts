@@ -1,5 +1,5 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
 import { DobyStoreService } from '../store/doby-store.service';
 import { Doby } from '../models/Doby';
 
@@ -11,7 +11,7 @@ import { Doby } from '../models/Doby';
     </div>
     <ul>
       <app-doby-list-item
-        *ngFor="let doby of dobys"
+        *ngFor="let doby of dobys$ | async"
         [doby]="doby"
         (toggleDoby)="toggleDoby(doby, $event)"
         (deleteDoby)="deleteDoby(doby)">
@@ -20,21 +20,10 @@ import { Doby } from '../models/Doby';
   `,
   styleUrls: ['doby-list.component.css']
 })
-export class DobyListComponent implements OnInit, OnDestroy {
-  dobys: Doby[];
-  dobysSubscription: Subscription;
+export class DobyListComponent {
+  dobys$: Observable<Doby[]> = this.dobyStore.dobys;
 
   constructor (private dobyStore: DobyStoreService) {}
-
-  ngOnInit() {
-    this.dobysSubscription = this.dobyStore.dobys.subscribe((dobys: Doby[]) => {
-      this.dobys = dobys;
-    });
-  }
-
-  ngOnDestroy() {
-    if (this.dobysSubscription) { this.dobysSubscription.unsubscribe(); }
-  }
 
   toggleDoby(doby: Doby, completed: boolean) {
     this.dobyStore.editDoby({...doby, completed});
