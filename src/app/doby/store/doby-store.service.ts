@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { withLatestFrom } from 'rxjs/operators';
+import { withLatestFrom, map } from 'rxjs/operators';
 
 import { Doby } from '../models/Doby';
 import { DobyHttpService } from '../http/doby-http.service';
@@ -16,6 +16,12 @@ export class DobyStoreService {
 
   get dobys(): Observable<Doby[]> {
       return this._dobys.asObservable();
+  }
+
+  getDobyById(id: number): Observable<Doby> {
+    return this.dobys.pipe(
+      map(dobys => dobys.find(doby => doby.id === id))
+    );
   }
 
   loadInitialData() {
