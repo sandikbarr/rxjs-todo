@@ -30,13 +30,13 @@ export class DobyChecklistComponent implements OnInit, OnDestroy {
       filter(values => !!values || values === ''),
       map((values: string) => {
         return values.split(',')
-          .filter(v => v && v.trim())
-          .map((v, i) => {
+          .filter(description => description)
+          .map((description, i) => {
             let completed;
             if (this.checklist && this.checklist.length > i) {
               completed = this.checklist[i].completed;
             }
-            return {description: v.trim(), completed};
+            return {description, completed};
           });
       })
     ).subscribe(checklist => this.checklistChange.emit(checklist));
@@ -51,7 +51,7 @@ export class DobyChecklistComponent implements OnInit, OnDestroy {
   }
 
   get checklistString(): string {
-    return this.checklist && this.checklist.length && this.checklist.map(c => c.description).join(', ') || '';
+    return this.checklist && this.checklist.length && this.checklist.map(c => c.description).join(',') || '';
   }
 
   onToggleChecklistItem(index: number) {
