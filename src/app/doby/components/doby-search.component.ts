@@ -1,6 +1,6 @@
 import { Component, Output, EventEmitter, OnInit, OnDestroy } from '@angular/core';
 import { Subject, Subscription } from 'rxjs';
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-doby-search',
@@ -17,16 +17,17 @@ export class DobySearchComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.changeSub = this.searchStream.pipe(
+      filter(searchText => searchText.length > 2),
       debounceTime(300),
       distinctUntilChanged()
-    ).subscribe(search => this.search.emit(search));
+    ).subscribe(searchText => this.search.emit(searchText));
   }
 
   ngOnDestroy() {
     if (this.changeSub) { this.changeSub.unsubscribe(); }
   }
 
-  onSearch(search: string) {
-    this.searchStream.next(search);
+  onSearch(searchText: string) {
+    this.searchStream.next(searchText);
   }
 }
