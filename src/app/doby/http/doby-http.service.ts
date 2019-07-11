@@ -11,17 +11,22 @@ const headers = new HttpHeaders({
 
 @Injectable()
 export class DobyHttpService {
+  base = 'http://localhost:3000/dobys';
   search: string;
 
   constructor(private http: HttpClient) { }
 
-  getAllDobys(): Observable<Doby[]> {
-    return this.http.get<Doby[]>('http://localhost:3000/dobys');
+  getDobys(search?: string): Observable<Doby[]> {
+    let url;
+    if (search || this.search) {
+      this.search = search;
+      url = this.base + '?q=' + this.search;
+    }
+    return this.http.get<Doby[]>(url || this.base);
   }
 
   searchDobys(search: string): Observable<Doby[]> {
-    this.search = search;
-    return this.http.get<Doby[]>('http://localhost:3000/dobys?q=' + search);
+    return this.getDobys(search);
   }
 
   saveDoby(newDoby: Doby): Observable<Doby> {

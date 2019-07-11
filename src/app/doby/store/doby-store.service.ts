@@ -11,11 +11,11 @@ export class DobyStoreService {
   private _dobys: BehaviorSubject<Doby[]> = new BehaviorSubject([]);
 
   constructor(private dobyAPI: DobyHttpService) {
-      this.loadInitialData();
+    this.loadData();
   }
 
   get dobys(): Observable<Doby[]> {
-      return this._dobys.asObservable();
+    return this._dobys.asObservable();
   }
 
   getDobyById(id: number): Observable<Doby> {
@@ -24,23 +24,13 @@ export class DobyStoreService {
     );
   }
 
-  loadInitialData() {
-    this.dobyAPI.getAllDobys()
+  loadData(search?: string) {
+    this.dobyAPI.getDobys(search)
       .subscribe(
           dobys => {
               this._dobys.next(dobys);
           },
           err => console.log('Error retrieving Dobys')
-      );
-  }
-
-  search(search: string) {
-    this.dobyAPI.searchDobys(search)
-      .subscribe(
-        dobys => {
-          this._dobys.next(dobys);
-        },
-        err => console.log('Error searching Dobys')
       );
   }
 

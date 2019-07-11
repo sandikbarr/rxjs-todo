@@ -39,6 +39,6 @@ export class DobyListComponent {
   }
 
   searchDobys(search: string) {
-    this.dobyStore.search(search);
+    this.dobyStore.loadData(search);
   }
 }
