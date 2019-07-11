@@ -9,6 +9,7 @@ import { DobyStoreService } from './store/doby-store.service';
 import { DobyListComponent } from './components/doby-list.component';
 import { DobyListItemComponent } from './components/doby-list-item.component';
 import { DobyAddItemComponent } from './components/doby-add-item.component';
+import { DobySearchComponent } from './components/doby-search.component';
 import { DobyEditComponent } from './components/edit/doby-edit.component';
 import { DobyTagsComponent } from './components/edit/doby-tags.component';
 import { DobyChecklistComponent } from './components/edit/doby-checklist.component';
@@ -23,6 +24,7 @@ import { DobyChecklistComponent } from './components/edit/doby-checklist.compone
     DobyListComponent,
     DobyListItemComponent,
     DobyAddItemComponent,
+    DobySearchComponent,
     DobyEditComponent,
     DobyTagsComponent,
     DobyChecklistComponent

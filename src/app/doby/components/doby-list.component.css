@@ -1,6 +1,6 @@
-.add-doby {
+.doby-list-actions {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   margin: 1em;
 }
 ul {

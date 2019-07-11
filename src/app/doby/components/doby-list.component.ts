@@ -6,8 +6,9 @@ import { Doby } from '../models/Doby';
 @Component({
   selector: 'app-doby-list',
   template: `
-    <div class="add-doby">
+    <div class="doby-list-actions">
       <app-doby-add-item (addDoby)="addDoby($event)"></app-doby-add-item>
+      <app-doby-search (search)="searchDobys($event)"></app-doby-search>
     </div>
     <ul>
       <app-doby-list-item
@@ -35,5 +36,9 @@ export class DobyListComponent {
 
   deleteDoby(doby: Doby) {
     this.dobyStore.deleteDoby(doby);
+  }
+
+  searchDobys(search: string) {
+    this.dobyStore.search(search);
   }
 }

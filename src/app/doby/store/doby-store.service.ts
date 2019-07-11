@@ -34,6 +34,16 @@ export class DobyStoreService {
       );
   }
 
+  search(search: string) {
+    this.dobyAPI.searchDobys(search)
+      .subscribe(
+        dobys => {
+          this._dobys.next(dobys);
+        },
+        err => console.log('Error searching Dobys')
+      );
+  }
+
   addDoby(newDoby: Doby): Observable<Doby> {
     const observable = this.dobyAPI.saveDoby(newDoby);
 

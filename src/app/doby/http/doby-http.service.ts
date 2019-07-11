@@ -11,11 +11,17 @@ const headers = new HttpHeaders({
 
 @Injectable()
 export class DobyHttpService {
+  search: string;
 
   constructor(private http: HttpClient) { }
 
   getAllDobys(): Observable<Doby[]> {
     return this.http.get<Doby[]>('http://localhost:3000/dobys');
+  }
+
+  searchDobys(search: string): Observable<Doby[]> {
+    this.search = search;
+    return this.http.get<Doby[]>('http://localhost:3000/dobys?q=' + search);
   }
 
   saveDoby(newDoby: Doby): Observable<Doby> {
