@@ -2,8 +2,13 @@
   "todos": [
     {
       "id": 1,
-      "completed": false,
-      "description": "Who really killed Lilly Kane?"
+      "completed": true,
+      "description": "Who really killed Lilly Kane?",
+      "tags": [
+        "one",
+        "two",
+        "three"
+      ]
     },
     {
       "id": 2,

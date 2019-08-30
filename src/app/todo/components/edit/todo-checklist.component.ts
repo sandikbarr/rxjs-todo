@@ -3,7 +3,7 @@ import { Subject, Subscription } from 'rxjs';
 import { distinctUntilChanged, debounceTime, map, filter } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-doby-checklist',
+  selector: 'app-todo-checklist',
   template: `
     <label for="checklist" title="add items as comma separated values">Checklist: </label>
     <input id="checklist" [value]="checklistString" (keyup)="onChecklistChange($event.target.value)">
@@ -14,9 +14,9 @@ import { distinctUntilChanged, debounceTime, map, filter } from 'rxjs/operators'
       <label for="{{i + '_' + item.description"> {{item.description}}</label>
     </ng-container>
   `,
-  styleUrls: ['doby-checklist.component.css']
+  styleUrls: ['todo-checklist.component.css']
 })
-export class DobyChecklistComponent implements OnInit, OnDestroy {
+export class TodoChecklistComponent implements OnInit, OnDestroy {
   @Input() checklist: {description: string, completed?: boolean}[];
   @Output() checklistChange = new EventEmitter<{description: string, completed?: boolean}[]>();
   checklistSub: Subscription;

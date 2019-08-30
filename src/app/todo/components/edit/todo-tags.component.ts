@@ -3,7 +3,7 @@ import { Subject, Subscription } from 'rxjs';
 import { distinctUntilChanged, debounceTime, map, filter } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-doby-tags',
+  selector: 'app-todo-tags',
   template: `
     <label for="tags" title="enter tags as comma separated values">Tags: </label>
     <input id="tags"
@@ -11,7 +11,7 @@ import { distinctUntilChanged, debounceTime, map, filter } from 'rxjs/operators'
       (keyup)="onTagsChange($event.target.value)"/>
   `
 })
-export class DobyTagsComponent implements OnInit, OnDestroy {
+export class TodoTagsComponent implements OnInit, OnDestroy {
   @Input() tags: string[];
   @Output() tagsChange = new EventEmitter<string[]>();
   changeSub: Subscription;

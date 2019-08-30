@@ -3,13 +3,13 @@ import { Subject, Subscription } from 'rxjs';
 import { debounceTime, distinctUntilChanged, filter } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-doby-search',
+  selector: 'app-todo-search',
   template: `
     <label for="search">Search: </label>
     <input id="search" (keyup)="onSearch($event.target.value)"/>
   `
 })
-export class DobySearchComponent implements OnInit, OnDestroy {
+export class TodoSearchComponent implements OnInit, OnDestroy {
   @Output() search = new EventEmitter<string>();
 
   changeSub: Subscription;
@@ -17,9 +17,9 @@ export class DobySearchComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.changeSub = this.searchStream.pipe(
-      filter(searchText => searchText.length > 2),
-      debounceTime(300),
-      distinctUntilChanged()
+      filter(searchText => searchText.length > 2),  // min length
+      debounceTime(300),                            // wait for break in keystrokes
+      distinctUntilChanged()                        // only if value changes
     ).subscribe(searchText => this.search.emit(searchText));
   }
 
