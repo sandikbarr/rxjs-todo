@@ -1,0 +1,44 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "completed": false,
+      "description": "Who really killed Lilly Kane?"
+    },
+    {
+      "id": 2,
+      "description": "What’s gotten in to Duncan?",
+      "completed": false
+    },
+    {
+      "id": 3,
+      "description": "What happened the night of Shelly Pomroy's party?",
+      "completed": false
+    },
+    {
+      "id": 4,
+      "description": "Where did Veronica's mom go and why did she leave?",
+      "completed": false
+    },
+    {
+      "id": 5,
+      "description": "Who stole the money at Logan’s poker game?",
+      "completed": false
+    },
+    {
+      "id": 6,
+      "description": "Who was Jackie with at Java the Hut?",
+      "completed": false
+    },
+    {
+      "id": 7,
+      "description": "Can Jackie get Wallace to help find out who hit her father's car?",
+      "completed": false
+    },
+    {
+      "id": 8,
+      "description": "How did the bus crash?",
+      "completed": false
+    }
+  ]
+}
