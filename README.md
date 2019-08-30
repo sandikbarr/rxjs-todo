@@ -4,11 +4,12 @@ TODO application example code
 ## Slideshare
 [https://www.slideshare.net/secret/FL6NONZJ7DDAkf](https://www.slideshare.net/secret/FL6NONZJ7DDAkf)
 
-### Tech Talk Presented at
+### Presented at
 * KCDC - July 2019
 * Music City Code - September 2019
 
 ## Development server
 
-Run `yarn run json-server` to run the JSON API. The REST API runs on `http://localhost:3000/`
-Run `yarn start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+* Run `yarn run json-server` to run the JSON API. The REST API runs on `http://localhost:3000/`
+* Run `yarn start` for a dev server. Navigate to `http://localhost:4200/`.
+  * The app will automatically reload if you change any of the source files.
