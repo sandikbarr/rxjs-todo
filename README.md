@@ -2,7 +2,7 @@
 TODO application example code
 
 ## Slideshare
-[https://www.slideshare.net/secret/FL6NONZJ7DDAkf](https://www.slideshare.net/secret/FL6NONZJ7DDAkf)
+[https://www.slideshare.net/SandiBarr/angular-and-the-case-for-rxjs-215607733](https://www.slideshare.net/SandiBarr/angular-and-the-case-for-rxjs-215607733)
 
 ### Presented at
 * KCDC - July 2019
