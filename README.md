@@ -7,6 +7,8 @@ TODO application example code
 ### Presented at
 * KCDC - July 2019
 * Music City Code - September 2019
+* CodeMash - January 2020
+* NDC London - January 2020
 
 ## Development server
 
